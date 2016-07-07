@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+   >
+    <include
+        layout="@layout/head_item"
+        android:id="@+id/include"/>
+    <ScrollView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        >
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+           >
+            <com.yinchuan.ycbus.view.MyListView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/color_gray"
+                android:dividerHeight="1dp"
+                />
+        </LinearLayout>
+</ScrollView>
+</LinearLayout>

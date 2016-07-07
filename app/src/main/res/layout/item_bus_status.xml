@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+        android:background="#ffffff" >
+<TextView
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/num"
+    android:layout_width="35dp"
+    android:layout_height="35dp"
+    android:text="18"
+    android:textColor="@color/white"
+    android:gravity="center"
+    android:textStyle="bold"
+    android:background="@drawable/shadow" />
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/chat_bg">
+        <TextView
+            android:layout_weight="1.0"
+            android:id="@+id/station_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:text="银川文化城"/>
+        <LinearLayout
+            android:id="@+id/left"
+            android:visibility="gone"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+            <ImageView
+                android:id="@+id/left_icon1"
+                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:src="@drawable/blue_left"/>
+            <TextView
+                android:id="@+id/run_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/royalblue"
+                android:textSize="14sp"
+                android:text="x2开往"/>
+            <ImageView
+                android:id="@+id/left_icon2"
+                android:layout_height="25dp"
+                android:layout_width="25dp"
+                android:src="@drawable/runing" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/right"
+            android:visibility="gone"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+            <ImageView
+                android:id="@+id/right_icon1"
+                android:layout_height="20dp"
+                android:layout_width="20dp"
+                android:src="@drawable/stop"/>
+            <TextView
+                android:id="@+id/stop_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/royalblue"
+                android:textSize="14sp"
+                android:text="x2停靠"/>
+            <ImageView
+                android:id="@+id/right_icon2"
+                android:layout_height="25dp"
+                android:layout_width="25dp"
+                android:src="@drawable/bus_stop" />
+        </LinearLayout>
+        </LinearLayout>
+
+</LinearLayout>
