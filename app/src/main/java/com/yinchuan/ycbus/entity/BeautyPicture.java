@@ -14,6 +14,21 @@ public class BeautyPicture {
     private String index;
     private String qhimg_url;//封面图
 
+    @Override
+    public String toString() {
+        return "BeautyPicture{" +
+                "cover_height='" + cover_height + '\'' +
+                ", id='" + id + '\'' +
+                ", group_title='" + group_title + '\'' +
+                ", tag='" + tag + '\'' +
+                ", cover_imgurl='" + cover_imgurl + '\'' +
+                ", cover_width='" + cover_width + '\'' +
+                ", total_count='" + total_count + '\'' +
+                ", index='" + index + '\'' +
+                ", qhimg_url='" + qhimg_url + '\'' +
+                '}';
+    }
+
     public String getCover_height() {
         return cover_height;
     }

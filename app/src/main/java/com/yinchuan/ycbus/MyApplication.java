@@ -58,6 +58,8 @@ public class MyApplication extends Application {
     public static DisplayImageOptions setOptions() {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .showImageOnLoading(R.mipmap.bg)
+                .showImageForEmptyUri(R.mipmap.bg)
+                .showImageOnFail(R.mipmap.bg)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
                 .considerExifParams(true)

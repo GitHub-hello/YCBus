@@ -27,6 +27,27 @@ public class ConstantsUrl {
 /**
  * 根据频道或者关键字查询新闻
  */
-public static final String GET_NEWS_DETAIL = "http://apis.baidu.com/showapi_open_bus/channel_news/search_news";
+   public static final String GET_NEWS_DETAIL = "http://apis.baidu.com/showapi_open_bus/channel_news/search_news";
+	/**
+	 * 爬取360的美女图片分类
+	 */
+	public static final String GET_360_PICTURE_CATEGORY="http://image.so.com/api/channel_tags.json";
+
+	/*爬去360美图的封面图
+	* ch：beauty，
+	* t1：595。。。。。。。
+	* listtype：hot， new
+	* sn;开始数目，默认null，30、60、90、120、150.。。。。。。
+	* */
+	public static final String GET_360_PICTURE_BY_HTML = "http://image.so.com/z";
+	public static final String GET_360_PICTURE_BY_JSON = "http://image.so.com/zj";
+	/*爬去360美图单个包含的列表数据
+	*ch=beauty
+	* t1=595
+	* listtype=hot
+	* id=2a5a8577befe928ac705feecfb1ed70b
+	 **/
+	public static final String GET_360_PICTURE_DETAIL = "http://image.so.com/zvj";
+
 
 }

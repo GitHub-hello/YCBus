@@ -7,6 +7,14 @@ public class BeautyCategory {
     private String url;
     private String t;
     private String title;
+    public BeautyCategory(){
+        super();
+    }
+    public BeautyCategory(String t, String title, String url) {
+        this.t = t;
+        this.title = title;
+        this.url = url;
+    }
 
     @Override
     public String toString() {
