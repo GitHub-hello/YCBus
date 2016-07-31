@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.CircularArray;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
@@ -18,8 +19,10 @@ import android.view.ViewGroup;
 import com.alibaba.fastjson.JSON;
 import com.yinchuan.ycbus.R;
 import com.yinchuan.ycbus.activity.GalleryPicActivity;
+import com.yinchuan.ycbus.adapter.BaseLoadingAdapter;
 import com.yinchuan.ycbus.adapter.GirlRecycleAdapter;
 import com.yinchuan.ycbus.adapter.PictureRecycleAdapter;
+import com.yinchuan.ycbus.adapter.RecycleLoadMoreAdapter;
 import com.yinchuan.ycbus.entity.BeautyPicResult;
 import com.yinchuan.ycbus.entity.BeautyPicture;
 import com.yinchuan.ycbus.util.AsyTaskHttpGet;
@@ -47,7 +50,8 @@ public class PictureFragment extends Fragment implements SwipeRefreshLayout.OnRe
     private SwipeRefreshLayout swipe;
     private String t1, path;
     private ArrayList<BeautyPicture> pictures = new ArrayList<>();
-     private int currentPage = 1;
+    private CircularArray<BeautyPicture> mDatas = new CircularArray();
+    private int currentPage = 1;
     private PictureRecycleAdapter adapter;
     private int lastCount = 0;
     @Override
@@ -65,7 +69,11 @@ public class PictureFragment extends Fragment implements SwipeRefreshLayout.OnRe
         path = bundle.getString("url");
         recycler = (RecyclerView) view.findViewById(R.id.recycle);
         recycler.setItemAnimator(new DefaultItemAnimator());
-        recycler.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));//设置RecyclerView布局管理器为2列垂直排布
+        //recycler.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));//设置RecyclerView布局管理器为2列垂直排布
+        StaggeredGridLayoutManager mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        ((StaggeredGridLayoutManager)mLayoutManager).setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        recycler.setLayoutManager(mLayoutManager);
+
         swipe = (SwipeRefreshLayout)view.findViewById(R.id.swipe);
         swipe.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light);
         swipe.setOnRefreshListener(this);
@@ -204,6 +212,20 @@ public class PictureFragment extends Fragment implements SwipeRefreshLayout.OnRe
         }
 
         private void setAdapter() {
+            for(BeautyPicture model : pictures){
+                mDatas.addLast(model);
+            }
+
+            RecycleLoadMoreAdapter adapter = new RecycleLoadMoreAdapter(recycler, mDatas);
+            recycler.setAdapter(adapter);
+            adapter.setOnLoadingListener(new BaseLoadingAdapter.OnLoadingListener() {
+                @Override
+                public void loading() {
+                    currentPage++;
+                    getHtml();
+                }
+            });
+/*
             if(adapter == null){
                 adapter = new PictureRecycleAdapter(getActivity(), pictures);
                 recycler.setAdapter(adapter);
@@ -226,7 +248,7 @@ public class PictureFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 public void ItemLongClickListener(View view, int postion) {
 
                 }
-            });
+            });*/
         }
 
     @Override
